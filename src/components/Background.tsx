@@ -6,7 +6,7 @@ export default function Background() {
         className="absolute left-1/2 top-[-20%] h-[600px] w-[800px] -translate-x-1/2 rounded-full opacity-30 blur-[120px]"
         style={{
           background:
-            "radial-gradient(circle, rgba(39,117,202,0.3) 0%, rgba(27,75,138,0.1) 50%, transparent 70%)",
+            "radial-gradient(circle, rgba(62,115,196,0.3) 0%, rgba(27,75,138,0.1) 50%, transparent 70%)",
         }}
       />
       {/* Grid pattern */}
@@ -21,7 +21,7 @@ export default function Background() {
       {/* Floating orbs */}
       <div
         className="absolute left-[10%] top-[30%] h-[300px] w-[300px] rounded-full opacity-20 blur-[100px] animate-pulse-glow"
-        style={{ background: "radial-gradient(circle, #2775ca, transparent)" }}
+        style={{ background: "radial-gradient(circle, #3e73c4, transparent)" }}
       />
       <div
         className="absolute right-[5%] top-[50%] h-[250px] w-[250px] rounded-full opacity-15 blur-[100px] animate-pulse-glow"
@@ -38,15 +38,11 @@ export default function Background() {
         }}
       />
 
-      {/* Floating USDC coins */}
-      <FloatingCoin className="left-[8%] top-[18%] h-12 w-12" delay="0s" duration="5s" />
-      <FloatingCoin className="right-[12%] top-[25%] h-16 w-16" delay="1.2s" duration="6.5s" />
-      <FloatingCoin className="left-[18%] bottom-[20%] h-10 w-10" delay="2s" duration="4.5s" />
-      <FloatingCoin className="right-[8%] bottom-[15%] h-14 w-14" delay="0.5s" duration="7s" />
-      <FloatingCoin className="left-[45%] top-[8%] h-8 w-8" delay="3s" duration="5.5s" />
-      <FloatingCoin className="right-[30%] bottom-[30%] h-11 w-11" delay="1.8s" duration="6s" />
-      <FloatingCoin className="left-[35%] bottom-[8%] h-9 w-9" delay="2.5s" duration="5s" />
-      <FloatingCoin className="right-[20%] top-[60%] h-10 w-10" delay="0.8s" duration="6.5s" />
+      {/* Floating blurred USDC coins — YouTube thumbnail style */}
+      <FloatingCoin className="left-[6%] top-[12%] h-40 w-40" delay="0s" duration="6s" blur="blur-md" opacity="opacity-30" />
+      <FloatingCoin className="right-[8%] top-[18%] h-56 w-56" delay="1.5s" duration="8s" blur="blur-lg" opacity="opacity-25" />
+      <FloatingCoin className="left-[15%] bottom-[8%] h-48 w-48" delay="2.5s" duration="7s" blur="blur-md" opacity="opacity-25" />
+      <FloatingCoin className="right-[12%] bottom-[14%] h-36 w-36" delay="0.8s" duration="6.5s" blur="blur-sm" opacity="opacity-30" />
 
       {/* Vignette */}
       <div
@@ -64,12 +60,14 @@ interface FloatingCoinProps {
   className: string;
   delay: string;
   duration: string;
+  blur: string;
+  opacity: string;
 }
 
-function FloatingCoin({ className, delay, duration }: FloatingCoinProps) {
+function FloatingCoin({ className, delay, duration, blur, opacity }: FloatingCoinProps) {
   return (
     <div
-      className={`absolute ${className} animate-float opacity-20`}
+      className={`absolute ${className} animate-float ${opacity} ${blur}`}
       style={{ animationDelay: delay, animationDuration: duration }}
     >
       <UsdcCoin />
@@ -79,21 +77,22 @@ function FloatingCoin({ className, delay, duration }: FloatingCoinProps) {
 
 function UsdcCoin() {
   return (
-    <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-full w-full drop-shadow-[0_0_8px_rgba(39,117,202,0.4)]">
-      {/* Outer ring */}
-      <circle cx="32" cy="32" r="30" fill="#2775ca" />
-      <circle cx="32" cy="32" r="30" stroke="#1b4b8a" strokeWidth="1" opacity="0.5" />
-      {/* Inner circle */}
-      <circle cx="32" cy="32" r="24" fill="#2775ca" />
-      {/* Dollar sign */}
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16" className="h-full w-full">
       <path
-        d="M40 28C40 25 37 23 33 23H31C27 23 24 25 24 28C24 31 27 32 31 33H33C37 34 40 35 40 38C40 41 37 43 33 43H31C27 43 24 41 24 38"
-        stroke="white"
-        strokeWidth="2.5"
-        strokeLinecap="round"
-        fill="none"
+        fill="#3e73c4"
+        d="M8 16c4.4183 0 8 -3.5817 8 -8 0 -4.41828 -3.5817 -8 -8 -8C3.58172 0 0 3.58172 0 8c0 4.4183 3.58172 8 8 8Z"
+        strokeWidth="0.5"
       />
-      <path d="M32 20V24M32 42V46" stroke="white" strokeWidth="2.5" strokeLinecap="round" />
+      <path
+        fill="#ffffff"
+        d="M10.01105 9.062c0 -1.062 -0.64 -1.426 -1.92 -1.578 -0.914 -0.1215 -1.0965 -0.364 -1.0965 -0.789 0 -0.425 0.305 -0.698 0.914 -0.698 0.5485 0 0.8535 0.182 1.0055 0.6375 0.0158 0.04405 0.04475 0.0822 0.08295 0.10925 0.03815 0.0271 0.0837 0.04185 0.13055 0.04225h0.4875c0.02815 0.00075 0.05615 -0.0042 0.08235 -0.0146 0.02615 -0.0104 0.04995 -0.02605 0.0699 -0.0459 0.01995 -0.01985 0.0357 -0.0436 0.0462 -0.0697 0.01055 -0.02615 0.01565 -0.05415 0.01505 -0.0823v-0.03c-0.0596 -0.32955 -0.22635 -0.6302 -0.47435 -0.85525 -0.248 -0.22505 -0.5634 -0.36185 -0.89715 -0.38925V4.571005c0 -0.1215 -0.0915 -0.2125 -0.2435 -0.243h-0.4575c-0.1215 0 -0.213 0.091 -0.2435 0.243V5.269c-0.9145 0.121 -1.493 0.728 -1.493 1.487 0 1.001 0.609 1.3955 1.889 1.5475 0.8535 0.1515 1.1275 0.334 1.1275 0.8195 0 0.485 -0.4265 0.819 -1.0055 0.819 -0.7925 0 -1.0665 -0.3335 -1.158 -0.789 -0.03 -0.121 -0.122 -0.182 -0.2135 -0.182h-0.518c-0.02815 -0.0007 -0.0561 0.00435 -0.0822 0.0148 -0.02615 0.0104 -0.04985 0.02605 -0.0698 0.0459 -0.0199 0.01985 -0.03555 0.04355 -0.04605 0.06965 -0.0105 0.0261 -0.0156 0.05405 -0.01495 0.08215v0.03c0.1215 0.759 0.6095 1.305 1.615 1.457v0.7285c0 0.121 0.0915 0.2125 0.2435 0.2425h0.4575c0.1215 0 0.213 -0.091 0.2435 -0.2425V10.67c0.9145 -0.1515 1.5235 -0.789 1.5235 -1.6085v0.0005Z"
+        strokeWidth="0.5"
+      />
+      <path
+        fill="#ffffff"
+        d="M6.446 12.2485c-2.37698 -0.85 -3.59598 -3.49 -2.71198 -5.8265 0.457 -1.275 1.46248 -2.2455 2.71198 -2.701 0.122 -0.0605 0.1825 -0.1515 0.1825 -0.3035v-0.425c0 -0.121 -0.0605 -0.212 -0.1825 -0.2425 -0.0305 0 -0.0915 0 -0.122 0.03 -0.68575 0.21416 -1.3224 0.561865 -1.87327 1.023085 -0.550855 0.461225 -1.00503 1.026855 -1.336385 1.664315 -0.331355 0.6375 -0.53334 1.3342 -0.59432 2.05005 -0.06098 0.71585 0.020245 1.4367 0.238995 2.12105 0.548 1.7 1.8585 3.005 3.56498 3.551 0.122 0.0605 0.244 0 0.274 -0.1215 0.0305 -0.03 0.0305 -0.061 0.0305 -0.1215v-0.425c0 -0.091 -0.091 -0.212 -0.1825 -0.273Zm3.23 -9.468c-0.122 -0.061 -0.244 0 -0.274 0.121 -0.0305 0.0305 -0.0305 0.061 -0.0305 0.1215v0.425c0 0.1215 0.091 0.2425 0.1825 0.3035 2.377 0.85 3.596 3.49 2.712 5.8265 -0.457 1.275 -1.4625 2.2455 -2.712 2.701 -0.122 0.0605 -0.1825 0.1515 -0.1825 0.3035v0.425c0 0.121 0.0605 0.212 0.1825 0.2425 0.0305 0 0.0915 0 0.122 -0.03 0.6858 -0.21415 1.32245 -0.56185 1.8733 -1.0231 0.55085 -0.4612 1.00505 -1.02685 1.3364 -1.6643 0.33135 -0.6375 0.53335 -1.3342 0.5943 -2.05005 0.061 -0.71585 -0.02025 -1.4367 -0.239 -2.12105 -0.548 -1.73 -1.889 -3.035 -3.565 -3.581Z"
+        strokeWidth="0.5"
+      />
     </svg>
   );
 }
