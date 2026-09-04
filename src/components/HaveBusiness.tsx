@@ -1,26 +1,16 @@
 import { useState } from "react";
 import PageHeader from "./PageHeader";
-import { CheckIcon, StoreIcon, ArrowRightIcon, ZapIcon, ShieldIcon, GlobeIcon, ChartIcon } from "./Icons";
-
-interface HaveBusinessProps {
-  onBack: () => void;
-}
-
-const categories = [
-  { name: "Digital Products", desc: "Ebooks, templates, presets, downloads", icon: "📦" },
-  { name: "Communities", desc: "Discord, Slack, Telegram groups", icon: "💬" },
-  { name: "SaaS & Software", desc: "Apps, tools, subscriptions", icon: "⚡" },
-  { name: "Courses & Education", desc: "Online courses, coaching, tutorials", icon: "🎓" },
-  { name: "Services & Consulting", desc: "Freelance, agencies, expert help", icon: "🤝" },
-  { name: "Memberships", desc: "Premium content, recurring access", icon: "🔑" },
-];
-
-const features = [
-  { icon: <ZapIcon className="h-5 w-5" />, title: "Instant setup", desc: "Launch your store in minutes, not days" },
-  { icon: <ShieldIcon className="h-5 w-5" />, title: "Secure payments", desc: "Built-in checkout with fraud protection" },
-  { icon: <GlobeIcon className="h-5 w-5" />, title: "Global reach", desc: "Sell to anyone, anywhere in the world" },
-  { icon: <ChartIcon className="h-5 w-5" />, title: "Real-time analytics", desc: "Track sales, revenue, and customers live" },
-];
+import {
+  CheckIcon,
+  StoreIcon,
+  ArrowRightIcon,
+  ZapIcon,
+  ShieldIcon,
+  GlobeIcon,
+  ChartIcon,
+} from "./Icons";
+import { HaveBusinessProps } from "./business/lib/types";
+import { categories, features } from "./business/lib/constants";
 
 export default function HaveBusiness({ onBack }: HaveBusinessProps) {
   const [selected, setSelected] = useState<string | null>(null);
@@ -37,9 +27,13 @@ export default function HaveBusiness({ onBack }: HaveBusinessProps) {
           <div className="mb-6 inline-flex h-20 w-20 items-center justify-center rounded-full bg-green-500/20 ring-1 ring-green-500/30">
             <CheckIcon className="h-10 w-10 text-green-400" />
           </div>
-          <h1 className="mb-3 text-3xl font-bold text-white sm:text-4xl">You're all set!</h1>
+          <h1 className="mb-3 text-3xl font-bold text-white sm:text-4xl">
+            You're all set!
+          </h1>
           <p className="mb-8 max-w-md text-zinc-400">
-            Your store for <span className="font-semibold text-white">{selected}</span> is being set up. We'll guide you through adding your first product.
+            Your store for{" "}
+            <span className="font-semibold text-white">{selected}</span> is
+            being set up. We'll guide you through adding your first product.
           </p>
           <button
             onClick={onBack}
@@ -67,16 +61,18 @@ export default function HaveBusiness({ onBack }: HaveBusinessProps) {
           <button
             key={cat.name}
             onClick={() => setSelected(cat.name)}
-            className={`group relative animate-fade-in-up opacity-0 rounded-2xl border p-5 text-left transition-all duration-300 hover:scale-[1.02] ${
-              delayClass(i)
-            } ${
+            className={`group relative animate-fade-in-up opacity-0 rounded-2xl border p-5 text-left transition-all duration-300 hover:scale-[1.02] ${delayClass(
+              i,
+            )} ${
               selected === cat.name
                 ? "border-blue-500 bg-blue-500/10 ring-1 ring-blue-500/30"
                 : "border-white/10 bg-white/[0.03] hover:border-white/20 hover:bg-white/[0.06]"
             }`}
           >
             <div className="mb-3 text-3xl">{cat.icon}</div>
-            <h3 className="mb-1 text-base font-semibold text-white">{cat.name}</h3>
+            <h3 className="mb-1 text-base font-semibold text-white">
+              {cat.name}
+            </h3>
             <p className="text-xs leading-relaxed text-zinc-500">{cat.desc}</p>
             {selected === cat.name && (
               <div className="absolute right-4 top-4">
@@ -99,7 +95,9 @@ export default function HaveBusiness({ onBack }: HaveBusinessProps) {
             <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-white/5 text-blue-400 ring-1 ring-white/10">
               {feat.icon}
             </div>
-            <h4 className="mb-1 text-sm font-semibold text-white">{feat.title}</h4>
+            <h4 className="mb-1 text-sm font-semibold text-white">
+              {feat.title}
+            </h4>
             <p className="text-xs leading-relaxed text-zinc-500">{feat.desc}</p>
           </div>
         ))}
@@ -126,6 +124,13 @@ export default function HaveBusiness({ onBack }: HaveBusinessProps) {
 }
 
 function delayClass(index: number): string {
-  const delays = ["delay-100", "delay-200", "delay-300", "delay-400", "delay-500", "delay-600"];
+  const delays = [
+    "delay-100",
+    "delay-200",
+    "delay-300",
+    "delay-400",
+    "delay-500",
+    "delay-600",
+  ];
   return delays[index % delays.length];
 }
