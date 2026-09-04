@@ -1,4 +1,4 @@
-import { RocketIcon, StoreIcon, CashIcon, ArrowRightIcon } from "./Icons";
+import { StoreIcon, CashIcon, ArrowRightIcon } from "./Icons";
 
 interface StartPageProps {
   onHaveBusiness: () => void;
@@ -94,15 +94,16 @@ export default function StartPage({
           Tell us about your business
         </h1>
         <p className="max-w-md animate-fade-in-up text-balance text-base leading-relaxed text-zinc-400 opacity-0 delay-300 sm:text-lg">
-          Where do you want to go?
+          Sell paid groups, get paid in USDC. The crypto-native marketplace for
+          key opinion leaders. Choose your path to get started.
         </p>
       </div>
 
       {/* Choice cards */}
       <div className="flex w-full max-w-4xl flex-col items-center gap-6 md:flex-row md:justify-center md:gap-5">
         <ChoiceCard
-          title="I have a paid group"
-          subtitle="Sell your paid group without intermediaries or processing fees."
+          title="I have a business"
+          subtitle="Launch your paid group and start collecting USDC from your followers in minutes."
           icon={<StoreIcon className="h-10 w-10" />}
           gradient="linear-gradient(90deg, #10b981, #047857)"
           glowColor="rgba(16, 185, 129, 0.15)"
@@ -110,8 +111,8 @@ export default function StartPage({
           delay="delay-400"
         />
         <ChoiceCard
-          title="I want to create my own"
-          subtitle="Discover opportunities and start earning with our AI-powered tools."
+          title="I want a business"
+          subtitle="Discover opportunities and start earning USDC with our AI-powered tools."
           icon={<CashIcon className="h-10 w-10" />}
           gradient="linear-gradient(90deg, #f59e0b, #d97706)"
           glowColor="rgba(245, 158, 11, 0.15)"
