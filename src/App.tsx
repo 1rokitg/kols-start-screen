@@ -21,7 +21,7 @@ export default function App() {
       <Background />
       <header className="bg-background border-stroke sticky top-0 z-50 flex h-14 w-full items-center border-b px-6 sm:fixed sm:inset-x-0">
         <div className="mx-auto flex w-full max-w-[1200px] items-center">
-          <a aria-label="Whop home" href="/" className="flex items-center">
+          <a aria-label="Beta home" href="/" className="flex items-center">
             <svg
               className="text-gray-12 h-[22px] w-auto"
               fill="none"
@@ -74,7 +74,7 @@ export default function App() {
           </a>
           <div className="ml-auto flex items-center gap-2 max-sm:gap-0">
             <a
-              href="https://network.whop.com"
+              href="https://network.beta.com"
               target="_blank"
               rel="noopener noreferrer"
               role="button"
@@ -85,7 +85,7 @@ export default function App() {
               For enterprise
             </a>
             <a
-              href="https://docs.whop.com"
+              href="https://docs.beta.com"
               target="_blank"
               rel="noopener noreferrer"
               role="button"
