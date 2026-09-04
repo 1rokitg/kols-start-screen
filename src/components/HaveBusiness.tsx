@@ -1,14 +1,6 @@
 import { useState } from "react";
 import PageHeader from "./PageHeader";
-import {
-  CheckIcon,
-  StoreIcon,
-  ArrowRightIcon,
-  ZapIcon,
-  ShieldIcon,
-  GlobeIcon,
-  ChartIcon,
-} from "./Icons";
+import { CheckIcon, StoreIcon, ArrowRightIcon } from "./Icons";
 import { HaveBusinessProps } from "./business/lib/types";
 import { categories, features } from "./business/lib/constants";
 
